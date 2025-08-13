@@ -207,3 +207,46 @@ for (i in seq_along(tigers)){
 big_cats[i] <- tigers[i] + lions[i]
 }
 print(big_cats)
+
+# For loops to iterate across columns of data frame
+
+#create vector to store values
+mean_mtcars <- vector(mode = "numeric", length = ncol(mtcars))
+
+for(i in 1:ncol(mtcars)){
+  mean_val <- mean(mtcars[[i]], na.rm=TRUE)
+  mean_mtcars[i] <- mean_val
+}
+mean_mtcars
+
+# A for loop (iterate) over columns with a condition
+
+library(palmerpenguins)
+
+for (i in 1:ncol(penguins)){
+  if (is.numeric(penguins[[i]])) {
+    penguin_median <- median(penguins[[i]], na.rm=TRUE)
+    print(penguin_median)
+  } else{
+    print("data not numeric")
+  }
+}
+
+# Functional programming
+
+# apply() funciton- iterates over columns or rows
+
+# rewrite our for loop for finding the mean values of the columns in mt_cars
+apply(X = mtcars, MARGIN = 2, FUN = mean)
+# apply(mtcars, 1, mean) # Can also be ran without equals
+
+# same as saying apply the function mean across the columns in mtcars
+#load in tidyverse
+library(tidyverse)
+
+#adding penguin summary to save values/ dataframe
+penguin_summary <- penguins %>% #pipe is carrying all the penguins- AND THEN
+  group_by(species) %>%  #pipe is taking the species - AND THEN
+  summarise(across(where(is.numeric), mean, na.rm=TRUE)) #for loop with a conditional function
+
+
