@@ -150,3 +150,60 @@ for (i in seq_along(tree_height)) {
   new_val <- tree_height[i] + tree_height[ i + 1]
   print(new_val) # Last value is NA because we don't have 5 values, only 4!
 }
+
+# for loops with conditional statements
+animal <-c("cat", "dog", "dog", "zebra", "dog")
+
+# checking if vector works
+one_animal <- animal[1]
+
+# i <- 3 #rm(i) to remove it off environment pane
+
+for (i in seq_along(animal)) {
+  if (animal[i] == "dog"){
+  print("I love dogs!")
+} else{
+  print("These are other animals")
+}
+}
+
+# Example 5- for loop with conditional statements
+
+# animal species
+species <- c("dog", "elephant", "goat", "dog", "dog", "elephant")
+
+# And their respective ages in human years
+age_human <- c(3, 8, 4, 6, 12, 18)
+
+# Convert ages to "animal years" using the following:
+# 1 human year = 7 in dog years
+# 1 human year = 0.88 in elephant years
+# 1 human year = 4.7 in goat years
+
+# i <- 2 #rm(i)
+
+# Allocate a space for our output
+animal_ages <- vector(mode = "numeric",length = length(species)) #print shows all zeros, Will use in for loop
+
+for(i in seq_along(species)){
+if(species[i] == "dog"){
+  animal_age <- age_human[i] * 7 # every year on earth every dog should be 7 in dog years
+} else if (species[i] == "elephant"){
+  animal_age <- age_human[i] * 0.88
+} else if (species[i] == "goat") {
+  animal_age <- age_human[i] * 4.7
+}
+  animal_ages[i] <- animal_age # Populate empty vector, getting stored
+}
+
+# Example 6- Storing an output
+
+tigers <- c(29, 34, 82)
+lions <- c(2, 18, 6)
+
+big_cats <- vector(mode= "numeric", length = length(tigers))
+
+for (i in seq_along(tigers)){ 
+big_cats[i] <- tigers[i] + lions[i]
+}
+print(big_cats)
