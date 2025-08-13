@@ -133,6 +133,7 @@ tree_height <- c(1, 2, 6, 10)
 tree_height[1] + tree_height[2]
 
 #Convert into generalizable expression- TESTING!!
+# Body of for loop!
 i <- 1 # Can replace with values from tree height to make sure sequence is correct
 new_val <- tree_height[i] + tree_height[ i + 1]
 print(new_val) # If it works- use in for loop. Copy and past without i <- 1
